@@ -60,7 +60,7 @@ public class ItemController {
 ## 테스트 방법
 1. IntelliJ에서 WishlistApplication.java의 Run(▶️) 버튼을 눌러 개발 서버를 실행합니다.
 2. Postman을 엽니다.
-3. baseURL을 http://localhost:8080으로 설정합니다. (3-2, 3-3) (또는 3-1에서 만든 React 앱(http://localhost:5173)에서 직접 테스트합니다. - 3-4)
+3. baseURL을 http://localhost:8080으로 설정합니다.
 4. Postman으로 POST /items, GET /items, DELETE /items/{id} 요청을 보내 서버가 정상 동작하는지 테스트합니다.
 
 ## 개발자 도구 활용하기
@@ -70,8 +70,8 @@ public class ItemController {
 
 ## 체크리스트
 - [ ] IntelliJ에서 Spring 서버가 Tomcat started on port(s): 8080 로그와 함께 정상 실행된다.
-- [ ] [3-2] memo 프로필로 실행 후, Postman으로 POST -> GET -> DELETE -> GET 요청이 의도대로 동작한다.
-- [ ] [3-3] firebase 프로필로 전환 후, Postman으로 POST -> Stop(서버 중지) -> Run(서버 재시작) -> GET을 했을 때 데이터가 사라지지 않고 조회된다.
+- [ ] memo 프로필로 실행 후, Postman으로 POST -> GET -> DELETE -> GET 요청이 의도대로 동작한다.
+- [ ] firebase 프로필로 전환 후, Postman으로 POST -> Stop(서버 중지) -> Run(서버 재시작) -> GET을 했을 때 데이터가 사라지지 않고 조회된다.
 - [ ] 문제 1, 2를 완료하고 3-3 테스트까지 통과했다.
 
 라이선스
