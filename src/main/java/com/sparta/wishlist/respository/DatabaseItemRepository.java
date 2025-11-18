@@ -38,17 +38,16 @@ public class DatabaseItemRepository implements ItemRepository {
     public Item save(Item item) throws ExecutionException, InterruptedException {
         DocumentReference docRef;
         if (item.getId() == null) {
-            // [방식 1: Firestore가 ID를 생성하게 함]
-            // (이 경우, Firestore의 String ID를 Item의 Long ID 필드에 저장할 방법을 찾아야 함)
-            docRef = getDb().collection(COLLECTION_NAME).document();
-            // (임시) Firestore의 String ID 해시코드를 Long ID로 사용 (권장 X)
-            item.setId(Math.abs((long)docRef.getId().hashCode()));
-            docRef.set(item).get();
+            long newId = System.currentTimeMillis();
+            item.setId(newId);
+
+            docRef = getDb().collection(COLLECTION_NAME)
+                    .document(String.valueOf(newId));
         } else {
-            // [방식 2: Item의 Long ID를 Firestore 문서 ID(String)로 사용]
-            docRef = getDb().collection(COLLECTION_NAME).document(String.valueOf(item.getId()));
-            docRef.set(item).get();
+            docRef = getDb().collection(COLLECTION_NAME)
+                    .document(String.valueOf(item.getId()));
         }
+        docRef.set(item).get();
         return item;
     }
 
